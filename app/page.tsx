@@ -73,9 +73,9 @@ export default function HomePage() {
           <div className="demo-grid">
             <Panel name="Button / variants">
               <div className="stack">
-                <Button>Default</Button><Button variant="brand">Brand</Button><Button variant="secondary">Secondary</Button>
+                <Button>Default</Button><Button variant="secondary">Secondary</Button>
                 <Button variant="outline">Outline</Button><Button variant="ghost">Ghost</Button><Button variant="destructive">Delete</Button>
-                <Button variant="link">Learn more</Button><Button variant="light">Light</Button>
+                <Button variant="link">Learn more</Button>
               </div>
             </Panel>
             <Panel name="Button / sizes + Badge">
@@ -86,8 +86,8 @@ export default function HomePage() {
                 </div>
                 <Separator />
                 <div className="stack">
-                  <Badge>Active</Badge><Badge variant="accent">New</Badge><Badge variant="secondary">Draft</Badge>
-                  <Badge variant="outline">Review</Badge><Badge variant="destructive">Blocked</Badge><Badge variant="ghost">Quiet</Badge>
+                  <Badge>Active</Badge><Badge variant="secondary">Draft</Badge>
+                  <Badge variant="outline">Review</Badge><Badge variant="destructive">Blocked</Badge>
                 </div>
               </div>
             </Panel>
