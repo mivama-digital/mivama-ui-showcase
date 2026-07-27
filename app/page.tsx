@@ -12,8 +12,8 @@ export default function HomePage() {
           <h1>UI <span>component</span><br />field guide.</h1>
         </div>
         <div className="header-meta">
-          <strong>92</strong>
-          exported React components from the installed <code>@mivama/ui</code> package.
+          <strong>20</strong>
+          component families from the official shadcn base-nova <code>@mivama/ui</code> package, including Tooltip.
         </div>
       </header>
 

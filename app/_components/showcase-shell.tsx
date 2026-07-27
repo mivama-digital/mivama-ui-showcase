@@ -2,14 +2,39 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Moon, Sun } from "lucide-react";
+import { useEffect, useSyncExternalStore } from "react";
 
 import { componentPages } from "./showcase-pages";
 
+function subscribeTheme(onChange: () => void) {
+  window.addEventListener("mivama-theme-change", onChange);
+  return () => window.removeEventListener("mivama-theme-change", onChange);
+}
+
+function getThemeSnapshot() {
+  return document.documentElement.classList.contains("dark");
+}
+
 export function ShowcaseShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const dark = useSyncExternalStore(subscribeTheme, getThemeSnapshot, () => false);
+
+  useEffect(() => {
+    document.documentElement.dataset.hydrated = "true";
+    return () => { delete document.documentElement.dataset.hydrated; };
+  }, []);
+
+  function toggleTheme() {
+    const nextDark = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", nextDark);
+    localStorage.setItem("mivama-theme", nextDark ? "dark" : "light");
+    window.dispatchEvent(new Event("mivama-theme-change"));
+  }
 
   return (
     <div className="lab-shell">
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <nav className="site-nav" aria-label="Component pages">
         <Link className="site-mark" href="/">Mivama UI</Link>
         <div className="site-nav-links">
@@ -23,8 +48,18 @@ export function ShowcaseShell({ children }: { children: React.ReactNode }) {
             </Link>
           ))}
         </div>
+        <button
+          aria-label={`Use ${dark ? "light" : "dark"} theme`}
+          aria-pressed={dark}
+          className="theme-toggle"
+          onClick={toggleTheme}
+          type="button"
+        >
+          {dark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
+          <span>{dark ? "Light" : "Dark"}</span>
+        </button>
       </nav>
-      {children}
+      <div id="main-content" tabIndex={-1}>{children}</div>
       <footer className="footer-note">
         <span>@mivama/ui · installed package exports</span>
         <span>Multi-page component and state reference.</span>

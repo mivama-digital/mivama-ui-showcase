@@ -1,3 +1,7 @@
+"use client";
+
+import { cloneElement, useId, type ReactElement, type ReactNode } from "react";
+
 export function PageIntro({ eyebrow, title, description, count }: {
   eyebrow: string;
   title: string;
@@ -20,7 +24,7 @@ export function Section({ index, title, description, children }: {
   index: string;
   title: string;
   description: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <section className="catalog-section">
@@ -37,7 +41,7 @@ export function Section({ index, title, description, children }: {
 export function Panel({ name, note, children, wide = false }: {
   name: string;
   note?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   wide?: boolean;
 }) {
   return (
@@ -51,11 +55,23 @@ export function Panel({ name, note, children, wide = false }: {
   );
 }
 
-export function Fixture({ label, children }: { label: string; children: React.ReactNode }) {
+export function Fixture({ label, children, error }: {
+  label: string;
+  children: ReactElement<{ id?: string; "aria-describedby"?: string }>;
+  error?: string;
+}) {
+  const generatedId = useId();
+  const controlId = children.props.id ?? generatedId;
+  const errorId = error ? `${controlId}-error` : undefined;
+
   return (
     <div className="fixture">
-      <span className="fixture-label">{label}</span>
-      {children}
+      <label className="fixture-label" htmlFor={controlId}>{label}</label>
+      {cloneElement(children, {
+        id: controlId,
+        "aria-describedby": errorId ?? children.props["aria-describedby"],
+      })}
+      {error ? <span className="fixture-error" id={errorId}>{error}</span> : null}
     </div>
   );
 }

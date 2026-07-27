@@ -18,7 +18,7 @@ export default function FormsPage() {
                 <Fixture label="Required"><Input required placeholder="Required value" /></Fixture>
                 <Fixture label="Read only"><Input readOnly value="Locked value" /></Fixture>
                 <Fixture label="Disabled"><Input disabled value="Unavailable" /></Fixture>
-                <Fixture label="Invalid"><Input aria-invalid defaultValue="Wrong value" /></Fixture>
+                 <Fixture label="Invalid" error="Enter a valid project name."><Input aria-invalid defaultValue="Wrong value" /></Fixture>
               </div>
             </Panel>
             <Panel name="Input / native types">
@@ -39,7 +39,7 @@ export default function FormsPage() {
               <div className="column"><Fixture label="Placeholder"><Textarea placeholder="Add context for your team..." /></Fixture><Fixture label="Multiline"><Textarea defaultValue={"First line\nSecond line\nThird line"} /></Fixture></div>
             </Panel>
             <Panel name="Textarea / states">
-              <div className="column"><Fixture label="Invalid"><Textarea aria-invalid defaultValue="Needs correction" /></Fixture><Fixture label="Read only"><Textarea readOnly value="This content cannot be changed." /></Fixture><Fixture label="Disabled"><Textarea disabled value="Unavailable content" /></Fixture></div>
+               <div className="column"><Fixture label="Invalid" error="Add more context before continuing."><Textarea aria-invalid defaultValue="Needs correction" /></Fixture><Fixture label="Read only"><Textarea readOnly value="This content cannot be changed." /></Fixture><Fixture label="Disabled"><Textarea disabled value="Unavailable content" /></Fixture></div>
             </Panel>
           </div>
         </Section>
@@ -48,16 +48,16 @@ export default function FormsPage() {
           <div className="demo-grid">
             <Panel name="Switch / states">
               <div className="column">
-                <label className="switch-row"><Switch /> Unchecked</label><Separator />
-                <label className="switch-row"><Switch defaultChecked /> Checked</label><Separator />
-                <label className="switch-row"><Switch disabled /> Disabled unchecked</label><Separator />
-                <label className="switch-row"><Switch disabled defaultChecked /> Disabled checked</label>
+                <label className="switch-row"><Switch aria-label="Unchecked" /> Unchecked</label><Separator />
+                <label className="switch-row"><Switch aria-label="Checked" defaultChecked /> Checked</label><Separator />
+                <label className="switch-row"><Switch aria-label="Disabled unchecked" disabled /> Disabled unchecked</label><Separator />
+                <label className="switch-row"><Switch aria-label="Disabled checked" disabled defaultChecked /> Disabled checked</label>
               </div>
             </Panel>
             <Panel name="Switch / form behavior">
               <div className="column">
-                <label className="switch-row"><Switch readOnly defaultChecked /> Read only</label><Separator />
-                <label className="switch-row"><Switch required name="notifications" value="enabled" /> Required named value</label>
+                <label className="switch-row"><Switch aria-label="Read only" readOnly defaultChecked /> Read only</label><Separator />
+                <label className="switch-row"><Switch aria-label="Required named value" required name="notifications" value="enabled" /> Required named value</label>
               </div>
             </Panel>
           </div>

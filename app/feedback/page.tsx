@@ -14,14 +14,14 @@ export default function FeedbackPage() {
     <main>
       <PageIntro eyebrow="Components / 03" title="Feedback" count="16 exports" description="Alerts, progress values, loading placeholders, and purposeful zero-data states." />
       <div className="catalog">
-        <Section index="03.1" title="Alert" description="All four variants with icon, action, and icon-free structures.">
+        <Section index="03.1" title="Alert" description="Both supported variants, with icons, an action, and an icon-free structure.">
           <div className="demo-grid single">
-            <Panel name="Alert / variants">
+            <Panel name="Alert / default and destructive">
               <div className="column">
                 <Alert><Info /><AlertTitle>Information</AlertTitle><AlertDescription>A neutral message with additional context.</AlertDescription></Alert>
-                <Alert variant="success"><CircleCheck /><AlertTitle>Ready to publish</AlertTitle><AlertDescription>All required checks passed.</AlertDescription><AlertAction><Button size="xs" variant="outline">View</Button></AlertAction></Alert>
-                <Alert variant="warning"><Bell /><AlertTitle>Review needed</AlertTitle><AlertDescription>Two items need your attention.</AlertDescription></Alert>
-                <Alert variant="destructive"><X /><AlertTitle>Sync failed</AlertTitle><AlertDescription>Reconnect the integration and retry.</AlertDescription></Alert>
+                <Alert><CircleCheck /><AlertTitle>Ready to publish</AlertTitle><AlertDescription>The default treatment can pair status copy with an action.</AlertDescription><AlertAction><Button size="xs" variant="outline">View details</Button></AlertAction></Alert>
+                <Alert><Bell /><AlertTitle>Review needed</AlertTitle><AlertDescription>Two items need your attention before publishing.</AlertDescription></Alert>
+                <Alert variant="destructive"><X /><AlertTitle className="text-foreground!">Sync failed</AlertTitle><AlertDescription className="text-foreground!">Reconnect the integration and retry.</AlertDescription></Alert>
                 <Alert><AlertTitle>No icon</AlertTitle><AlertDescription>The grid also supports an alert without a leading SVG.</AlertDescription></Alert>
               </div>
             </Panel>
@@ -32,18 +32,18 @@ export default function FeedbackPage() {
           <div className="demo-grid">
             <Panel name="Progress / standard values">
               <div className="column">
-                <Progress value={null}><ProgressLabel>Preparing</ProgressLabel><ProgressValue /></Progress>
-                <Progress value={0}><ProgressLabel>Not started</ProgressLabel><ProgressValue /></Progress>
-                <Progress value={37}><ProgressLabel>Uploading</ProgressLabel><ProgressValue /></Progress>
-                <Progress value={99}><ProgressLabel>Almost there</ProgressLabel><ProgressValue /></Progress>
-                <Progress value={100}><ProgressLabel>Complete</ProgressLabel><ProgressValue /></Progress>
+                <Progress aria-label="Preparing" value={null}><ProgressLabel>Preparing</ProgressLabel><ProgressValue /></Progress>
+                <Progress aria-label="Not started" value={0}><ProgressLabel>Not started</ProgressLabel><ProgressValue /></Progress>
+                <Progress aria-label="Uploading" value={37}><ProgressLabel>Uploading</ProgressLabel><ProgressValue /></Progress>
+                <Progress aria-label="Almost there" value={99}><ProgressLabel>Almost there</ProgressLabel><ProgressValue /></Progress>
+                <Progress aria-label="Complete" value={100}><ProgressLabel>Complete</ProgressLabel><ProgressValue /></Progress>
               </div>
             </Panel>
             <Panel name="Progress / custom range">
               <div className="column">
-                <Progress min={20} max={80} value={20}><ProgressLabel>Minimum</ProgressLabel><ProgressValue /></Progress>
-                <Progress min={20} max={80} value={50}><ProgressLabel>Midpoint</ProgressLabel><ProgressValue /></Progress>
-                <Progress min={20} max={80} value={80}><ProgressLabel>Maximum</ProgressLabel><ProgressValue /></Progress>
+                <Progress aria-label="Minimum" min={20} max={80} value={20}><ProgressLabel>Minimum</ProgressLabel><ProgressValue /></Progress>
+                <Progress aria-label="Midpoint" min={20} max={80} value={50}><ProgressLabel>Midpoint</ProgressLabel><ProgressValue /></Progress>
+                <Progress aria-label="Maximum" min={20} max={80} value={80}><ProgressLabel>Maximum</ProgressLabel><ProgressValue /></Progress>
               </div>
             </Panel>
           </div>

@@ -28,15 +28,15 @@ function TabExample({ orientation, variant }: { orientation: "horizontal" | "ver
 export default function NavigationPage() {
   return (
     <main>
-      <PageIntro eyebrow="Components / 05" title="Navigation" count="18 exports" description="Hierarchical location, page movement, and local views across every declared orientation and style." />
+      <PageIntro eyebrow="Components / 05" title="Navigation" count="19 exports" description="Hierarchical location, page movement, and local views across every declared orientation and style." />
       <div className="catalog">
         <Section index="05.1" title="Breadcrumb" description="Short, deep, collapsed, custom-separator, and composed-link examples.">
           <div className="demo-grid">
             <Panel name="Breadcrumb / collapsed">
-              <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="/">Workspace</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbEllipsis /></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbLink href="/navigation">Projects</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>UI refresh</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>
+               <Breadcrumb aria-label="Collapsed breadcrumb"><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="/">Workspace</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbEllipsis /></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbLink href="/navigation">Projects</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>UI refresh</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>
             </Panel>
             <Panel name="Breadcrumb / custom separator">
-              <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator><ChevronRight /></BreadcrumbSeparator><BreadcrumbItem><BreadcrumbPage>A very long current page label</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>
+               <Breadcrumb aria-label="Custom separator breadcrumb"><BreadcrumbList><BreadcrumbItem><BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator><ChevronRight /></BreadcrumbSeparator><BreadcrumbItem><BreadcrumbPage>A very long current page label</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>
             </Panel>
           </div>
         </Section>
@@ -44,10 +44,10 @@ export default function NavigationPage() {
         <Section index="05.2" title="Pagination" description="Active links, edge links, custom labels, and ellipsis for long ranges.">
           <div className="demo-grid">
             <Panel name="Pagination / middle page">
-              <Pagination><PaginationContent><PaginationItem><PaginationPrevious href="?page=1" /></PaginationItem><PaginationItem><PaginationLink href="?page=1">1</PaginationLink></PaginationItem><PaginationItem><PaginationLink href="?page=2" isActive>2</PaginationLink></PaginationItem><PaginationItem><PaginationLink href="?page=3">3</PaginationLink></PaginationItem><PaginationItem><PaginationNext href="?page=3" /></PaginationItem></PaginationContent></Pagination>
+               <Pagination aria-label="Middle page pagination"><PaginationContent><PaginationItem><PaginationPrevious href="?page=1" /></PaginationItem><PaginationItem><PaginationLink href="?page=1">1</PaginationLink></PaginationItem><PaginationItem><PaginationLink href="?page=2" isActive>2</PaginationLink></PaginationItem><PaginationItem><PaginationLink href="?page=3">3</PaginationLink></PaginationItem><PaginationItem><PaginationNext href="?page=3" /></PaginationItem></PaginationContent></Pagination>
             </Panel>
             <Panel name="Pagination / long range">
-              <Pagination><PaginationContent><PaginationItem><PaginationPrevious href="?page=4" text="Back" /></PaginationItem><PaginationItem><PaginationLink href="?page=1">1</PaginationLink></PaginationItem><PaginationItem><PaginationEllipsis /></PaginationItem><PaginationItem><PaginationLink href="?page=5" isActive>5</PaginationLink></PaginationItem><PaginationItem><PaginationEllipsis /></PaginationItem><PaginationItem><PaginationLink href="?page=12">12</PaginationLink></PaginationItem><PaginationItem><PaginationNext href="?page=6" text="Forward" /></PaginationItem></PaginationContent></Pagination>
+               <Pagination aria-label="Long range pagination"><PaginationContent><PaginationItem><PaginationPrevious href="?page=4" text="Back" /></PaginationItem><PaginationItem><PaginationLink href="?page=1">1</PaginationLink></PaginationItem><PaginationItem><PaginationEllipsis /></PaginationItem><PaginationItem><PaginationLink href="?page=5" isActive>5</PaginationLink></PaginationItem><PaginationItem><PaginationEllipsis /></PaginationItem><PaginationItem><PaginationLink href="?page=12">12</PaginationLink></PaginationItem><PaginationItem><PaginationNext href="?page=6" text="Forward" /></PaginationItem></PaginationContent></Pagination>
             </Panel>
           </div>
         </Section>

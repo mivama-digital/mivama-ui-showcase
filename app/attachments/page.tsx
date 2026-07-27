@@ -2,18 +2,19 @@
 
 import {
   Attachment, AttachmentAction, AttachmentActions, AttachmentContent, AttachmentDescription,
-  AttachmentGroup, AttachmentHeader, AttachmentMedia, AttachmentTitle, AttachmentTrigger,
+  AttachmentGroup, AttachmentMedia, AttachmentTitle, AttachmentTrigger,
 } from "@mivama/ui";
 import { Download, FileText, RefreshCw, X } from "lucide-react";
 
 import { PageIntro, Panel, Section } from "../_components/showcase";
 
 const orientations = ["horizontal", "vertical"] as const;
-const sizes = ["default", "sm"] as const;
-const states = ["default", "uploading", "processing", "error"] as const;
+const sizes = ["default", "sm", "xs"] as const;
+const states = ["idle", "uploading", "processing", "error", "done"] as const;
 const mediaVariants = ["icon", "image"] as const;
 
 function descriptionFor(state: typeof states[number]) {
+  if (state === "idle") return "Ready to upload · 4.8 MB";
   if (state === "uploading") return "Uploading · 64%";
   if (state === "processing") return "Processing file...";
   if (state === "error") return "Upload failed · retry available";
@@ -23,13 +24,13 @@ function descriptionFor(state: typeof states[number]) {
 export default function AttachmentsPage() {
   return (
     <main>
-      <PageIntro eyebrow="Components / 08" title="Attachments" count="32 states" description="The complete orientation × size × status × media matrix, plus grouped and linked file examples." />
+      <PageIntro eyebrow="Components / 08" title="Attachments" count="60 states" description="The complete orientation × size × status × media matrix, plus grouped and linked file examples." />
       <div className="catalog">
         {orientations.map((orientation, orientationIndex) => (
           <Section
             index={`08.${orientationIndex + 1}`}
             title={`${orientation[0].toUpperCase() + orientation.slice(1)} attachments`}
-            description={`Both sizes, all four states, and icon/image media in the ${orientation} layout.`}
+            description={`All three sizes, all five states, and icon/image media in the ${orientation} layout.`}
             key={orientation}
           >
             <div className={`attachment-matrix attachment-matrix-${orientation}`}>
@@ -39,11 +40,11 @@ export default function AttachmentsPage() {
                     <AttachmentMedia variant={media}>
                       {media === "icon" ? <FileText /> : <div className="attachment-preview">PDF</div>}
                     </AttachmentMedia>
-                    <AttachmentContent><AttachmentHeader><AttachmentTitle>{state}-report-with-a-long-filename.pdf</AttachmentTitle><AttachmentDescription>{descriptionFor(state)}</AttachmentDescription></AttachmentHeader></AttachmentContent>
+                    <AttachmentContent><AttachmentTitle>{state}-report-with-a-long-filename.pdf</AttachmentTitle><AttachmentDescription className={state === "error" ? "text-foreground!" : undefined}>{descriptionFor(state)}</AttachmentDescription></AttachmentContent>
                     <AttachmentActions>
-                      {state === "error" ? <AttachmentAction aria-label="Retry"><RefreshCw /></AttachmentAction> : <AttachmentAction aria-label={state === "default" ? "Download" : "Cancel"}>{state === "default" ? <Download /> : <X />}</AttachmentAction>}
+                      {state === "error" ? <AttachmentAction aria-label="Retry upload"><RefreshCw /></AttachmentAction> : state === "done" ? <AttachmentAction aria-label="Download report"><Download /></AttachmentAction> : <AttachmentAction aria-label={state === "idle" ? "Remove file" : "Cancel upload"}><X /></AttachmentAction>}
                     </AttachmentActions>
-                    <AttachmentTrigger aria-label={`Open ${state} report`} />
+                    {state === "done" ? <AttachmentTrigger render={<a href="/content" />} aria-label="Open completed report" /> : null}
                   </Attachment>
                 </Panel>
               ))))}
@@ -55,8 +56,8 @@ export default function AttachmentsPage() {
           <div className="demo-grid single">
             <Panel name="AttachmentGroup / mixed files">
               <AttachmentGroup>
-                <Attachment><AttachmentMedia><FileText /></AttachmentMedia><AttachmentContent><AttachmentHeader><AttachmentTitle>brand-guidelines.pdf</AttachmentTitle><AttachmentDescription>PDF · 4.8 MB</AttachmentDescription></AttachmentHeader></AttachmentContent><AttachmentActions><AttachmentAction aria-label="Download"><Download /></AttachmentAction></AttachmentActions><AttachmentTrigger href="#brand-guidelines" aria-label="Open brand guidelines" /></Attachment>
-                <Attachment state="processing" size="sm"><AttachmentMedia><FileText /></AttachmentMedia><AttachmentContent><AttachmentHeader><AttachmentTitle>campaign-assets.zip</AttachmentTitle><AttachmentDescription>Processing upload...</AttachmentDescription></AttachmentHeader></AttachmentContent><AttachmentActions><AttachmentAction aria-label="Cancel"><X /></AttachmentAction></AttachmentActions></Attachment>
+                <Attachment state="done"><AttachmentMedia><FileText /></AttachmentMedia><AttachmentContent><AttachmentTitle>brand-guidelines.pdf</AttachmentTitle><AttachmentDescription>PDF · 4.8 MB</AttachmentDescription></AttachmentContent><AttachmentActions><AttachmentAction aria-label="Download brand guidelines"><Download /></AttachmentAction></AttachmentActions><AttachmentTrigger render={<a href="/content" />} aria-label="Open brand guidelines" /></Attachment>
+                <Attachment state="processing" size="sm"><AttachmentMedia><FileText /></AttachmentMedia><AttachmentContent><AttachmentTitle>campaign-assets.zip</AttachmentTitle><AttachmentDescription>Processing upload...</AttachmentDescription></AttachmentContent><AttachmentActions><AttachmentAction aria-label="Cancel upload"><X /></AttachmentAction></AttachmentActions></Attachment>
               </AttachmentGroup>
             </Panel>
           </div>

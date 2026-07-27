@@ -27,7 +27,7 @@ export default function SheetPage() {
                   <SheetTrigger render={<Button variant="outline" />}><Icon />Open {side}</SheetTrigger>
                   <SheetContent side={side}>
                     <SheetHeader><SheetTitle>{side[0].toUpperCase() + side.slice(1)} sheet</SheetTitle><SheetDescription>This panel enters from the {side} edge of the viewport.</SheetDescription></SheetHeader>
-                    <div className="sheet-body"><label className="switch-row"><Switch defaultChecked />Email alerts</label><label className="switch-row"><Switch />Quiet mode</label></div>
+                    <div className="sheet-body"><label className="switch-row"><Switch aria-label="Email alerts" defaultChecked />Email alerts</label><label className="switch-row"><Switch aria-label="Quiet mode" />Quiet mode</label></div>
                     <SheetFooter><SheetClose render={<Button />}>Save settings</SheetClose></SheetFooter>
                   </SheetContent>
                 </Sheet>
