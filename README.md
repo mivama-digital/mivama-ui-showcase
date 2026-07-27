@@ -11,6 +11,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Component pages
+
+The catalog is split into focused routes for actions, content, feedback, forms,
+navigation, dialogs, sheets, attachments, and layout primitives. The examples
+cover every component family and every declared variant, size, orientation,
+side, alignment, tone, and attachment state in the installed package.
+
 ## Checks
 
 ```bash
