@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
-    "@mivama/ui": "https://github.com/mivama-digital/mivama-ui/releases/download/v1.0.0/mivama-ui-1.0.0.tgz",
+    "@mivama/ui": "https://github.com/mivama-digital/mivama-ui/releases/download/v1.1.0/mivama-ui-1.1.0.tgz",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.511.0",

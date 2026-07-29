@@ -1,6 +1,7 @@
 "use client";
 
 import { cloneElement, useId, type ReactElement, type ReactNode } from "react";
+import { Eyebrow, Heading, Text } from "@mivama/ui";
 
 export function PageIntro({ eyebrow, title, description, count }: {
   eyebrow: string;
@@ -11,9 +12,9 @@ export function PageIntro({ eyebrow, title, description, count }: {
   return (
     <header className="page-intro">
       <div>
-        <span className="eyebrow">{eyebrow}</span>
-        <h1>{title}</h1>
-        <p>{description}</p>
+        <Eyebrow render={<span />} className="eyebrow">{eyebrow}</Eyebrow>
+        <Heading render={<h1 />} variant="display">{title}</Heading>
+        <Text variant="lead">{description}</Text>
       </div>
       <strong>{count}</strong>
     </header>
@@ -29,9 +30,9 @@ export function Section({ index, title, description, children }: {
   return (
     <section className="catalog-section">
       <div className="section-label">
-        <span className="section-index">{index}</span>
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <Text render={<span />} variant="meta" className="section-index">{index}</Text>
+        <Heading variant="title">{title}</Heading>
+        <Text variant="small">{description}</Text>
       </div>
       {children}
     </section>

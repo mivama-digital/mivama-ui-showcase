@@ -2,6 +2,7 @@
 
 import {
   Button, Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,
+  Eyebrow, Heading, Text,
   Message, MessageAvatar, MessageContent, MessageFooter, MessageGroup, MessageHeader,
 } from "@mivama/ui";
 import { MoreHorizontal } from "lucide-react";
@@ -18,9 +19,34 @@ const messages = [
 export default function ContentPage() {
   return (
     <main>
-      <PageIntro eyebrow="Components / 02" title="Content" count="13 exports" description="Compound surfaces for structured information and conversational content." />
+      <PageIntro eyebrow="Components / 02" title="Content" count="18 exports" description="Brand typography, structured surfaces, and conversational content." />
       <div className="catalog">
-        <Section index="02.1" title="Card" description="Every Card subcomponent, both sizes, and structural combinations that activate parent styling.">
+        <Section index="02.1" title="Typography" description="Semantic elements and visual roles stay independent across products.">
+          <div className="demo-grid">
+            <Panel name="Heading / hierarchy" wide>
+              <div className="column">
+                <Heading variant="display">Display heading</Heading>
+                <Heading variant="page">Page heading</Heading>
+                <Heading variant="section">Section heading</Heading>
+                <Heading variant="title">Title heading</Heading>
+                <Heading variant="card">Card heading</Heading>
+              </div>
+            </Panel>
+            <Panel name="Text / hierarchy">
+              <div className="column">
+                <Text variant="lead">Lead copy introduces the key idea with generous rhythm.</Text>
+                <Text>Body copy remains readable across websites and portals.</Text>
+                <Text variant="small">Small copy supports secondary information.</Text>
+                <Text variant="meta">Metadata and compact labels</Text>
+              </div>
+            </Panel>
+            <Panel name="Eyebrow / brand label">
+              <Eyebrow>Shared Mivama system</Eyebrow>
+            </Panel>
+          </div>
+        </Section>
+
+        <Section index="02.2" title="Card" description="Every Card subcomponent, both sizes, and structural combinations that activate parent styling.">
           <div className="demo-grid">
             <Panel name="Card / complete">
               <Card>
@@ -48,7 +74,7 @@ export default function ContentPage() {
           </div>
         </Section>
 
-        <Section index="02.2" title="Message" description="Grouped exchanges in both alignments, using every official Message slot with semantic content.">
+        <Section index="02.3" title="Message" description="Grouped exchanges in both alignments, using every official Message slot with semantic content.">
           <div className="demo-grid">
             {(["start", "end"] as const).map((alignment) => (
               <Panel name={`Message / ${alignment}-aligned group`} key={alignment}>
