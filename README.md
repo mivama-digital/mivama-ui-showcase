@@ -1,6 +1,6 @@
 # Mivama UI Showcase
 
-Interactive component catalog and testbed for the official shadcn base-nova defaults packaged by [`@mivama/ui`](https://github.com/mivama-digital/mivama-ui). This project is independent from the Mivama website and installs the UI package directly from GitHub.
+Interactive component catalog and testbed for the official shadcn base-nova defaults packaged by [`@mivama/ui`](https://github.com/mivama-digital/mivama-ui). This project is independent from the Mivama website.
 
 ## Development
 
@@ -25,14 +25,15 @@ catalog in light and dark themes.
 ```bash
 npm run lint
 npm run typecheck
+npm run doctor
 npm run build
 npm run test:e2e
 ```
 
-Run the complete functional and accessibility gate with `npm run verify`.
-Visual snapshots are intentionally reviewed separately with
-`npm run test:visual`; update approved baselines with
-`npm run test:visual -- --update-snapshots`.
+Run the complete functional and accessibility gate with `npm run verify`
+(lint, typecheck, react-doctor, build, e2e). Visual snapshots are
+intentionally reviewed separately with `npm run test:visual`; update approved
+baselines with `npm run test:visual -- --update-snapshots`.
 
 The browser checks cover every route in both themes, opened overlay states,
 Axe accessibility rules, focus trapping, keyboard behavior, and 320 px
@@ -41,10 +42,17 @@ can be enabled explicitly with `PLAYWRIGHT_WEBKIT=1`; its Linux system
 dependencies must be installed first. Visual tests run against a production
 build and keep Chromium baselines.
 
-The showcase pins the immutable package tarball attached to the GitHub release.
-During package development, test an `npm pack` tarball with `--no-save` and
-`--package-lock=false`; do not commit a local `file:` dependency. Each package
-release must upload its tarball before this URL and lockfile are updated.
+## @mivama/ui dependency
+
+The showcase tracks the current development state of the UI package through
+the local tarball `file:../mivama-ui/mivama-ui-3.0.0.tgz`, which must exist
+next to this checkout (`npm pack` it from the mivama-ui repository). The
+tarball is intentionally unversioned in the ui repo, so a fresh clone of the
+showcase needs the ui repo present.
+
+For a published, release-pinned production flow instead, upload the tarball
+to the mivama-ui GitHub release and switch the dependency to its immutable
+URL before updating the lockfile — do not mix both modes in one commit.
 
 ## Deployment
 
