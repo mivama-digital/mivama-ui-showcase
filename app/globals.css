@@ -93,6 +93,16 @@ a { color: inherit; }
 .theme-toggle:hover { background: var(--muted); }
 .theme-toggle svg { width: 1rem; height: 1rem; }
 
+.contract-panel { display: grid; gap: 1.25rem; padding: clamp(1rem, 2.5vw, 2rem); border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); }
+.contract-panel > code { overflow-x: auto; padding: 0.8rem; border-radius: calc(var(--radius) - 2px); background: var(--muted); font-size: 0.8rem; }
+.contract-controls { display: flex; flex-wrap: wrap; gap: 1rem; }
+.contract-controls label { display: grid; gap: 0.4rem; min-width: min(12rem, 100%); color: var(--muted-foreground); font-size: 0.78rem; font-weight: 650; }
+.contract-controls select { min-height: var(--control-height); padding: 0 0.75rem; border: 1px solid var(--input); border-radius: var(--shape-control); background: var(--background); color: var(--foreground); text-transform: capitalize; }
+.contract-controls select:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.theme-matrix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.theme-preview { min-width: 0; padding: var(--panel-padding); border: 1px solid var(--border); border-radius: var(--shape-panel); background: var(--background); color: var(--foreground); }
+.theme-preview-label { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: var(--space-4); font-size: 0.78rem; font-weight: 650; text-transform: capitalize; }
+
 .site-mark:focus-visible,
 .site-nav-links a:focus-visible,
 .theme-toggle:focus-visible,
@@ -246,7 +256,7 @@ a { color: inherit; }
   .page-intro { grid-template-columns: 1fr; }
   .page-index { grid-template-columns: 1fr; }
   .catalog-section { grid-template-columns: 1fr; padding: 2.75rem 0; }
-  .demo-grid, .field-grid, .attachment-matrix-horizontal, .attachment-matrix-vertical { grid-template-columns: 1fr; }
+  .demo-grid, .field-grid, .attachment-matrix-horizontal, .attachment-matrix-vertical, .theme-matrix { grid-template-columns: 1fr; }
   .footer-note { flex-direction: column; }
 }
 

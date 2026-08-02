@@ -46,7 +46,7 @@ export default function ContentPage() {
           </div>
         </Section>
 
-        <Section index="02.2" title="Card" description="Every Card subcomponent, both sizes, and structural combinations that activate parent styling.">
+        <Section index="02.2" title="Card" description="Every Card subcomponent, all three sizes, and structural combinations that activate parent styling.">
           <div className="demo-grid">
             <Panel name="Card / complete">
               <Card>
@@ -63,6 +63,12 @@ export default function ContentPage() {
               <Card size="sm">
                 <CardHeader><CardTitle>Compact card</CardTitle><CardDescription>Reduced internal spacing.</CardDescription></CardHeader>
                 <CardContent><p className="sample-copy">Useful inside dense sidebars and dashboards.</p></CardContent>
+              </Card>
+            </Panel>
+            <Panel name="Card / large">
+              <Card size="lg">
+                <CardHeader><CardTitle>Prominent card</CardTitle><CardDescription>Expanded spacing for important content and calls to action.</CardDescription></CardHeader>
+                <CardContent><p className="sample-copy">The large density keeps spacing systematic without page-level padding overrides.</p></CardContent>
               </Card>
             </Panel>
             <Panel name="Card / title only">

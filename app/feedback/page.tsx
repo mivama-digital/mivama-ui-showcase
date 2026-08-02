@@ -14,14 +14,14 @@ export default function FeedbackPage() {
     <main>
       <PageIntro eyebrow="Components / 03" title="Feedback" count="16 exports" description="Alerts, progress values, loading placeholders, and purposeful zero-data states." />
       <div className="catalog">
-        <Section index="03.1" title="Alert" description="Both supported variants, with icons, an action, and an icon-free structure.">
+        <Section index="03.1" title="Alert" description="All semantic variants, with icons, an action, and an icon-free structure.">
           <div className="demo-grid single">
             <Panel name="Alert / default and destructive">
               <div className="column">
                 <Alert><Info /><AlertTitle>Information</AlertTitle><AlertDescription>A neutral message with additional context.</AlertDescription></Alert>
-                <Alert><CircleCheck /><AlertTitle>Ready to publish</AlertTitle><AlertDescription>The default treatment can pair status copy with an action.</AlertDescription><AlertAction><Button size="xs" variant="outline">View details</Button></AlertAction></Alert>
-                <Alert><Bell /><AlertTitle>Review needed</AlertTitle><AlertDescription>Two items need your attention before publishing.</AlertDescription></Alert>
-                <Alert variant="destructive"><X /><AlertTitle className="text-foreground!">Sync failed</AlertTitle><AlertDescription className="text-foreground!">Reconnect the integration and retry.</AlertDescription></Alert>
+                <Alert variant="success"><CircleCheck /><AlertTitle>Ready to publish</AlertTitle><AlertDescription>The success treatment can pair status copy with an action.</AlertDescription><AlertAction><Button size="xs" variant="outline">View details</Button></AlertAction></Alert>
+                <Alert variant="warning"><Bell /><AlertTitle>Review needed</AlertTitle><AlertDescription>Two items need your attention before publishing.</AlertDescription></Alert>
+                <Alert variant="destructive"><X /><AlertTitle>Sync failed</AlertTitle><AlertDescription>Reconnect the integration and retry.</AlertDescription></Alert>
                 <Alert><AlertTitle>No icon</AlertTitle><AlertDescription>The grid also supports an alert without a leading SVG.</AlertDescription></Alert>
               </div>
             </Panel>

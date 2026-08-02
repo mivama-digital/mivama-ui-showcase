@@ -1,4 +1,5 @@
 export const componentPages = [
+  { href: "/themes", label: "Themes", description: "Product, editorial, and portal themes across both densities" },
   { href: "/actions", label: "Actions", description: "Button and Badge defaults" },
   { href: "/content", label: "Content", description: "Card and Message defaults" },
   { href: "/feedback", label: "Feedback", description: "Alert, Progress, Skeleton, and Empty defaults" },

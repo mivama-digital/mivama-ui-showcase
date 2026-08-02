@@ -46,12 +46,28 @@ During package development, test an `npm pack` tarball with `--no-save` and
 `--package-lock=false`; do not commit a local `file:` dependency. Each package
 release must upload its tarball before this URL and lockfile are updated.
 
-## Production
+## Deployment
 
-The production container listens only on `127.0.0.1:8300`. Nginx terminates TLS and protects `ui.kamidzu.com` with HTTP Basic Authentication.
+`https://ui.kamidzu.com` laeuft aktuell als Entwicklungs-Deployment mit Hot
+Reload: das systemd-User-Unit `mivama-ui-showcase-dev.service` startet
+`next dev -p 8300 -H 127.0.0.1` (Build-Cache unter `.next-dev`), nginx leitet
+die Domain an diesen Port weiter. Aenderungen an `app/` sind ohne Neustart
+live; die Domain ist per Basic Auth geschuetzt.
 
 ```bash
+systemctl --user enable --now mivama-ui-showcase-dev
+systemctl --user status mivama-ui-showcase-dev
+journalctl --user -u mivama-ui-showcase-dev -f
+```
+
+Das Docker-Image (`docker-compose.prod.yml`, Container `mivama-ui-showcase` auf
+`127.0.0.1:8300`) ist die alternativ moegliche Produktionsausfuehrung; beim
+Wechsel zurueck auf Produktion zuerst den Dev-Dienst stoppen, damit kein
+`next dev`-Prozess auf dem Port laeuft:
+
+```bash
+systemctl --user stop mivama-ui-showcase-dev
 docker compose -f docker-compose.prod.yml up -d --build
 ```
 
-The Nginx virtual host template is available at `deploy/ui.kamidzu.com.nginx.conf`.
+Die Nginx-Virtual-Host-Vorlage liegt unter `deploy/ui.kamidzu.com.nginx.conf`.

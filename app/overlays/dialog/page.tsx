@@ -38,10 +38,10 @@ export default function DialogPage() {
             </Panel>
             <Panel name="Dialog / destructive">
               <Dialog>
-                <DialogTrigger render={<Button className="bg-destructive text-white hover:bg-destructive/90 dark:text-white" variant="destructive" />}><Trash2 />Delete project</DialogTrigger>
+                <DialogTrigger render={<Button variant="destructive" />}><Trash2 />Delete project</DialogTrigger>
                 <DialogContent>
                   <DialogHeader><DialogTitle>Delete this project?</DialogTitle><DialogDescription>This action cannot be undone. All associated files will be removed.</DialogDescription></DialogHeader>
-                  <DialogFooter><DialogClose render={<Button variant="outline" />}>Cancel</DialogClose><Button className="bg-destructive text-white hover:bg-destructive/90 dark:text-white" variant="destructive">Delete permanently</Button></DialogFooter>
+                  <DialogFooter><DialogClose render={<Button variant="outline" />}>Cancel</DialogClose><Button variant="destructive">Delete permanently</Button></DialogFooter>
                 </DialogContent>
               </Dialog>
             </Panel>

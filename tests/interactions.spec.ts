@@ -1,5 +1,20 @@
 import { expect, test } from "@playwright/test";
 
+test("theme and density controls update the document contract independently of dark mode", async ({ page }) => {
+  await page.goto("/themes");
+  const root = page.locator("html");
+
+  await expect(root).toHaveAttribute("data-mivama-theme", "product");
+  await expect(root).toHaveAttribute("data-density", "comfortable");
+  await page.getByRole("button", { name: "Use dark theme" }).click();
+  await page.getByRole("combobox", { name: "Theme", exact: true }).selectOption("editorial");
+  await page.getByRole("combobox", { name: "Density", exact: true }).selectOption("compact");
+
+  await expect(root).toHaveAttribute("data-mivama-theme", "editorial");
+  await expect(root).toHaveAttribute("data-density", "compact");
+  await expect(root).toHaveClass(/dark/);
+});
+
 test("dialog traps focus, closes with Escape, and restores focus", async ({ page }) => {
   await page.goto("/overlays/dialog");
   const trigger = page.getByRole("button", { name: "Invite collaborators" });

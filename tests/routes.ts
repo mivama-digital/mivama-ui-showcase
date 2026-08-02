@@ -1,5 +1,6 @@
 export const showcaseRoutes = [
   "/",
+  "/themes",
   "/actions",
   "/content",
   "/feedback",
