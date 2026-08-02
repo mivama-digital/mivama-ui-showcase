@@ -2,6 +2,7 @@
 
 import { Badge, Button, Separator } from "@mivama/ui";
 import { ArrowRight, Check, Settings } from "lucide-react";
+import Link from "next/link";
 
 import { PageIntro, Panel, Section } from "../_components/showcase";
 
@@ -37,7 +38,7 @@ export default function ActionsPage() {
                 <div className="stack"><Button><Check data-icon="inline-start" />Leading icon</Button><Button>Trailing icon<ArrowRight data-icon="inline-end" /></Button></div>
                 <Separator />
                 <div className="stack"><Button loading>Loading</Button><Button disabled>Disabled</Button><Button focusableWhenDisabled disabled>Focusable disabled</Button><Button aria-invalid>Invalid</Button></div>
-                <Button nativeButton={false} render={<a href="/content" />} variant="link">Rendered anchor</Button>
+                <Button nativeButton={false} render={<Link href="/content" />} variant="link">Rendered anchor</Button>
               </div>
             </Panel>
           </div>
@@ -53,7 +54,7 @@ export default function ActionsPage() {
               <div className="stack">
                 <Badge><Check />Complete</Badge>
                 <Badge variant="outline">Continue<ArrowRight /></Badge>
-                <Badge variant="outline" render={<a href="/feedback" />}>Linked badge</Badge>
+                <Badge variant="outline" render={<Link href="/feedback" />}>Linked badge</Badge>
                 <Badge aria-invalid>Invalid</Badge>
               </div>
             </Panel>

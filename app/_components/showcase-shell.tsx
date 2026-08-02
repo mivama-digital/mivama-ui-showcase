@@ -16,6 +16,13 @@ function getThemeSnapshot() {
   return document.documentElement.classList.contains("dark");
 }
 
+function toggleTheme() {
+  const nextDark = !document.documentElement.classList.contains("dark");
+  document.documentElement.classList.toggle("dark", nextDark);
+  localStorage.setItem("mivama-theme", nextDark ? "dark" : "light");
+  window.dispatchEvent(new Event("mivama-theme-change"));
+}
+
 export function ShowcaseShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const dark = useSyncExternalStore(subscribeTheme, getThemeSnapshot, () => false);
@@ -24,13 +31,6 @@ export function ShowcaseShell({ children }: { children: React.ReactNode }) {
     document.documentElement.dataset.hydrated = "true";
     return () => { delete document.documentElement.dataset.hydrated; };
   }, []);
-
-  function toggleTheme() {
-    const nextDark = !document.documentElement.classList.contains("dark");
-    document.documentElement.classList.toggle("dark", nextDark);
-    localStorage.setItem("mivama-theme", nextDark ? "dark" : "light");
-    window.dispatchEvent(new Event("mivama-theme-change"));
-  }
 
   return (
     <div className="lab-shell">

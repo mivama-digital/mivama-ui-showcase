@@ -15,13 +15,13 @@ function getSnapshot() {
   return `${root.dataset.mivamaTheme ?? "product"}:${root.dataset.density ?? "comfortable"}`;
 }
 
+function setContract(name: "mivamaTheme" | "density", value: string) {
+  document.documentElement.dataset[name] = value;
+  window.dispatchEvent(new Event("mivama-contract-change"));
+}
+
 export function ThemeControls() {
   const [theme, density] = useSyncExternalStore(subscribe, getSnapshot, () => "product:comfortable").split(":");
-
-  function setContract(name: "mivamaTheme" | "density", value: string) {
-    document.documentElement.dataset[name] = value;
-    window.dispatchEvent(new Event("mivama-contract-change"));
-  }
 
   return (
     <div className="contract-controls" aria-label="Document theme and density controls">

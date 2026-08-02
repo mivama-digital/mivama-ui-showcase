@@ -1,0 +1,11 @@
+{
+  "$schema": "https://react.doctor/schema/config.json",
+  "ignore": {
+    // Build and dev output is compiled code, not project source.
+    "files": [".next/**", ".next-dev/**"],
+    // Headings render through the @mivama/ui Heading wrapper; static
+    // analysis cannot resolve expression or JSX children behind the
+    // render prop and flags every occurrence (2/2 false positives).
+    "rules": ["react-doctor/heading-has-content"]
+  }
+}

@@ -5,6 +5,7 @@ import {
   AttachmentGroup, AttachmentMedia, AttachmentTitle, AttachmentTrigger,
 } from "@mivama/ui";
 import { Download, FileText, RefreshCw, X } from "lucide-react";
+import Link from "next/link";
 
 import { PageIntro, Panel, Section } from "../_components/showcase";
 
@@ -44,7 +45,7 @@ export default function AttachmentsPage() {
                     <AttachmentActions>
                       {state === "error" ? <AttachmentAction aria-label="Retry upload"><RefreshCw /></AttachmentAction> : state === "done" ? <AttachmentAction aria-label="Download report"><Download /></AttachmentAction> : <AttachmentAction aria-label={state === "idle" ? "Remove file" : "Cancel upload"}><X /></AttachmentAction>}
                     </AttachmentActions>
-                    {state === "done" ? <AttachmentTrigger render={<a href="/content" />} aria-label="Open completed report" /> : null}
+                    {state === "done" ? <AttachmentTrigger render={<Link href="/content" />} aria-label="Open completed report" /> : null}
                   </Attachment>
                 </Panel>
               ))))}
@@ -56,7 +57,7 @@ export default function AttachmentsPage() {
           <div className="demo-grid single">
             <Panel name="AttachmentGroup / mixed files">
               <AttachmentGroup>
-                <Attachment state="done"><AttachmentMedia><FileText /></AttachmentMedia><AttachmentContent><AttachmentTitle>brand-guidelines.pdf</AttachmentTitle><AttachmentDescription>PDF · 4.8 MB</AttachmentDescription></AttachmentContent><AttachmentActions><AttachmentAction aria-label="Download brand guidelines"><Download /></AttachmentAction></AttachmentActions><AttachmentTrigger render={<a href="/content" />} aria-label="Open brand guidelines" /></Attachment>
+                <Attachment state="done"><AttachmentMedia><FileText /></AttachmentMedia><AttachmentContent><AttachmentTitle>brand-guidelines.pdf</AttachmentTitle><AttachmentDescription>PDF · 4.8 MB</AttachmentDescription></AttachmentContent><AttachmentActions><AttachmentAction aria-label="Download brand guidelines"><Download /></AttachmentAction></AttachmentActions><AttachmentTrigger render={<Link href="/content" />} aria-label="Open brand guidelines" /></Attachment>
                 <Attachment state="processing" size="sm"><AttachmentMedia><FileText /></AttachmentMedia><AttachmentContent><AttachmentTitle>campaign-assets.zip</AttachmentTitle><AttachmentDescription>Processing upload...</AttachmentDescription></AttachmentContent><AttachmentActions><AttachmentAction aria-label="Cancel upload"><X /></AttachmentAction></AttachmentActions></Attachment>
               </AttachmentGroup>
             </Panel>

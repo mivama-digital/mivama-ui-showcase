@@ -6,6 +6,7 @@ import {
   SidebarMenuItem, SidebarProvider, SidebarRail, SidebarTrigger,
 } from "@mivama/ui";
 import { Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
+import Link from "next/link";
 
 import { PageIntro, Panel, Section } from "../_components/showcase";
 
@@ -15,7 +16,7 @@ export default function LayoutPage() {
       <Sidebar aria-label="Workspace sidebar" collapsible="icon" role="navigation">
         <SidebarHeader>
           <SidebarMenu>
-            <SidebarMenuItem><SidebarMenuButton size="lg" tooltip="Mivama OS" render={<a href="/layout" aria-label="Mivama OS home" />}><LayoutGrid /><span>Mivama OS</span></SidebarMenuButton></SidebarMenuItem>
+            <SidebarMenuItem><SidebarMenuButton size="lg" tooltip="Mivama OS" render={<Link href="/layout" aria-label="Mivama OS home" />}><LayoutGrid /><span>Mivama OS</span></SidebarMenuButton></SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
         <SidebarContent>
@@ -23,9 +24,9 @@ export default function LayoutPage() {
             <SidebarGroupLabel>Workspace</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                <SidebarMenuItem><SidebarMenuButton isActive tooltip="Overview" render={<a aria-current="page" href="/layout" />}><Home /><span>Overview</span></SidebarMenuButton></SidebarMenuItem>
-                <SidebarMenuItem><SidebarMenuButton tooltip="Projects" render={<a href="/content" />}><LayoutGrid /><span>Projects</span></SidebarMenuButton></SidebarMenuItem>
-                <SidebarMenuItem><SidebarMenuButton tooltip="People" render={<a href="/content" />}><Users /><span>People</span></SidebarMenuButton></SidebarMenuItem>
+                <SidebarMenuItem><SidebarMenuButton isActive tooltip="Overview" render={<Link aria-current="page" href="/layout" />}><Home /><span>Overview</span></SidebarMenuButton></SidebarMenuItem>
+                <SidebarMenuItem><SidebarMenuButton tooltip="Projects" render={<Link href="/content" />}><LayoutGrid /><span>Projects</span></SidebarMenuButton></SidebarMenuItem>
+                <SidebarMenuItem><SidebarMenuButton tooltip="People" render={<Link href="/content" />}><Users /><span>People</span></SidebarMenuButton></SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
@@ -33,13 +34,13 @@ export default function LayoutPage() {
             <SidebarGroupLabel>Tools</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                <SidebarMenuItem><SidebarMenuButton tooltip="Search" render={<a href="/navigation" />}><Search /><span>Search</span></SidebarMenuButton></SidebarMenuItem>
+                <SidebarMenuItem><SidebarMenuButton tooltip="Search" render={<Link href="/navigation" />}><Search /><span>Search</span></SidebarMenuButton></SidebarMenuItem>
                 <SidebarMenuItem><SidebarMenuButton disabled><LayoutGrid /><span>Disabled item</span></SidebarMenuButton></SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
-        <SidebarFooter><SidebarMenu><SidebarMenuItem><SidebarMenuButton tooltip="Settings" render={<a href="/forms" />}><Settings /><span>Settings</span></SidebarMenuButton></SidebarMenuItem></SidebarMenu></SidebarFooter>
+        <SidebarFooter><SidebarMenu><SidebarMenuItem><SidebarMenuButton tooltip="Settings" render={<Link href="/forms" />}><Settings /><span>Settings</span></SidebarMenuButton></SidebarMenuItem></SidebarMenu></SidebarFooter>
         <SidebarRail />
       </Sidebar>
       <SidebarInset>
